@@ -2,11 +2,50 @@
 POST http://localhost:3000/api/game
 Content-Type: application/json
 
+# {
+#   "name": "Far Cry 6",
+#   "description": "Far Cry 6 takes place in 2021 in Yara, a fictional Caribbean island nation inspired by Cuba and ruled by the dictator Antón Castillo (Giancarlo Esposito). A 1967 guerrilla revolution that toppled the presidency of his father led to Yara's isolation from the rest of the world.",
+#   "releaseYear": 2021,
+#   "price": 99,
+#   "image": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4MgHhyrHH13oYwXezEy7Wy/56985f97b3e3cc78e06c67ca0a054b32/FC6_meta-image__1_.jpg",
+#   "devices": ["play4", "xbox"]
+# }
+
+# {
+#   "name": "Far Cry 5",
+#   "description": "Set in Hope County, a fictional region of Montana, United States, the game revolves around the Project at Eden's Gate, a doomsday cult that has taken over the county at the command of its charismatic and powerful leader, Joseph Seed.",
+#   "releaseYear": 2018,
+#   "price": 99,
+#   "image": "https://store-images.s-microsoft.com/image/apps.22845.69582963086497758.e1cff2e3-ddf1-42bf-930d-f380ad63f100.1ef04059-9768-4999-b495-f48a52290ae9?q=90&w=480&h=270",
+#   "devices": ["play4", "xbox"]
+# }
+
+# {
+#   "name": "Far Cry 4",
+#   "description": "Far Cry 4 is a first-person action-adventure game. Players assume control of Ajay Ghale, a Kyrati-American who is on a quest to spread his deceased mother's ashes in the fictional country of Kyrat",
+#   "releaseYear": 2014,
+#   "price": 99,
+#   "image": "https://cdn.akamai.steamstatic.com/steam/apps/298110/capsule_616x353.jpg?t=1602602982",
+#   "devices": ["play4", "xbox"]
+# }
+
+
 {
-  "name": "Far Cry 6",
-  "description": "Far Cry 6 takes place in 2021 in Yara, a fictional Caribbean island nation inspired by Cuba and ruled by the dictator Antón Castillo (Giancarlo Esposito). A 1967 guerrilla revolution that toppled the presidency of his father led to Yara's isolation from the rest of the world.",
-  "releaseYear": 2021,
+  "name": "Far Cry 3",
+  "description": "Far Cry 3 is a first-person shooter set on the fictional Rook Islands, a tropical archipelago somewhere in the Pacific, controlled by pirates and mercenaries. Players control Jason Brody and can approach missions and objectives in a variety of ways.",
+  "releaseYear": 2012,
   "price": 99,
-  "image": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4MgHhyrHH13oYwXezEy7Wy/56985f97b3e3cc78e06c67ca0a054b32/FC6_meta-image__1_.jpg",
+  "image": "https://cdn1.epicgames.com/hellebore/offer/GameName_Edition_Capsule_1920X1080-1920x1080-3131a5c2e251c88843f63801db17885ae66ca44b.jpg",
   "devices": ["play4", "xbox"]
 }
+
+###
+GET http://localhost:3000/api/game
+
+###
+GET http://localhost:3000/api/game/63e1b42d36b74583d1663dc6
+Content-Type: application/json
+
+###
+DELETE http://localhost:3000/api/game/63e1b42d36b74583d1663dc6
+Content-Type: application/json
