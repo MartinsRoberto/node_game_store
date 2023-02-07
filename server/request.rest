@@ -1,0 +1,12 @@
+###
+POST http://localhost:3000/api/game
+Content-Type: application/json
+
+{
+  "name": "Far Cry 6",
+  "description": "Far Cry 6 takes place in 2021 in Yara, a fictional Caribbean island nation inspired by Cuba and ruled by the dictator Antón Castillo (Giancarlo Esposito). A 1967 guerrilla revolution that toppled the presidency of his father led to Yara's isolation from the rest of the world.",
+  "releaseYear": 2021,
+  "price": 99,
+  "image": "https://staticctf.akamaized.net/J3yJr34U2pZ2Ieem48Dwy9uqj5PNUQTn/4MgHhyrHH13oYwXezEy7Wy/56985f97b3e3cc78e06c67ca0a054b32/FC6_meta-image__1_.jpg",
+  "devices": ["play4", "xbox"]
+}
