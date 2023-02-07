@@ -78,6 +78,44 @@ const gameController = {
     catch (err) {
       console.log(err)
     }
+  },
+
+  update: async (req, res) => {
+    try {
+      const id = req.params.id
+
+      const game = {
+        name: req.body.name,
+        description: req.body.description,
+        releaseYear: req.body.releaseYear,
+        price: req.body.price,
+        image: req.body.image,
+        devices: req.body.image
+      }
+
+      const checkName = await GameModel.findById(id)
+
+      if (checkName.name != game.name) {
+        const checkAllNames = await GameModel.findOne({ name: game.name })
+
+        if (checkAllNames) {
+          res.status(409).json({ msg: "Este jogo já foi criado" })
+          return
+        }
+      }
+
+      const updateGame = await GameModel.findByIdAndUpdate(id, game)
+
+      if (!updateGame) {
+        res.status(404).json({ msg: "Jogo não encontrado" })
+        return
+      }
+
+      res.status(200).json({ updateGame, msg: "Jogo atualizada com sucesso" });
+    }
+    catch (err) {
+      console.log(err)
+    }
   }
 }
 

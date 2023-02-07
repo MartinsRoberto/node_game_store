@@ -10,4 +10,6 @@ router.route('/game/:id').get((req, res) => gameController.get(req, res))
 
 router.route('/game/:id').delete((req, res) => gameController.delete(req, res))
 
+router.route('/game/:id').put((req, res) => gameController.update(req, res))
+
 module.exports = router
