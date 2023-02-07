@@ -1,0 +1,49 @@
+
+#game-container .game-details{
+  position: relative;
+}
+
+#game-container .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2em 0;
+}
+
+#game-container .header span{
+  font-size: 0.8em;
+}
+
+#game-container img{
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+#game-container .line{
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 30px 0px;
+}
+
+#game-container .price{
+  background-color: #084298;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: absolute;
+  color: #ffffff;
+  top: 63px;
+  right: 0px;
+  padding: 5px;
+  font-size: 2em;
+}
+
+#game-container button{
+  display: block;
+  margin: auto;
+  font-size: 1em;
+}
+
+#game-container .devices{
+  margin-top: 30px;
+}

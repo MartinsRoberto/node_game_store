@@ -1,0 +1,14 @@
+#home .games-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+#home .game:hover{
+  transition: .4s;
+  transform: scale(1.0);
+}
+
+#home .game:hover{
+  transform: scale(1.1);
+}

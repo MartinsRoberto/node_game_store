@@ -10,9 +10,10 @@ const gameController = {
         releaseYear: req.body.releaseYear,
         price: req.body.price,
         image: req.body.image,
-        devices: req.body.image
+        devices: req.body.devices
       }
 
+      console.log(game.devices)
       const searchName = await GameModel.findOne({ name: game.name })
 
       if (searchName) {
@@ -33,7 +34,7 @@ const gameController = {
     try {
       const response = await GameModel.find()
 
-      res.status(200).json({ response })
+      res.status(200).json(response)
 
     }
     catch (err) {
@@ -52,7 +53,7 @@ const gameController = {
         return;
       }
 
-      res.status(200).json({ game })
+      res.status(200).json(game)
 
     }
     catch (err) {
