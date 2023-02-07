@@ -3,13 +3,14 @@ POST http://localhost:3000/api/game
 Content-Type: application/json
 
 {
-  "name": "Far Cry 10",
+  "name": "Far Cry 13",
   "description": "Far Cry is a first-person shooter set on the fictional Rook Islands, a tropical archipelago somewhere in the Pacific, controlled by pirates and mercenaries. Players control Jason Brody and can approach missions and objectives in a variety of ways.",
   "releaseYear": 2012,
   "price": 99,
   "image": "https://cdn1.epicgames.com/hellebore/offer/GameName_Edition_Capsule_1920X1080-1920x1080-3131a5c2e251c88843f63801db17885ae66ca44b.jpg",
   "devices": ["PlayStation 4", "PlayStation 5", "Xbox One","Xbox  Series X", "Xbox Series S", "Microsoft", "Windows"]
 }
+
 
 # {
 #   "name": "Far Cry 6",
