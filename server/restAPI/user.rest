@@ -5,11 +5,29 @@ Content-Type: application/json
 {
   "name": "roberto",
   "lastname": "maciel",
-  "email": "roberto@gmail.com",
+  "email": "roberto1@gmail.com",
   "password": "123",
-  "confirmpassword": "1123"
+  "confirmpassword": "123"
 }
 
 
 ###
 GET http://localhost:3000/api/user
+
+###
+GET http://localhost:3000/api/user/63e2c78c0f3f590652eb019
+
+###
+DELETE http://localhost:3000/api/user/63e2c78c0f3f5d90652eb019
+
+###
+PUT http://localhost:3000/api/user/63e2c7aa073849566c239a47
+Content-Type: application/json
+
+{
+  "name": "roberto",
+  "lastname": "macie33l",
+  "email": "roberto12121@gmail.com",
+  "password": "123",
+  "confirmpassword": "123"
+}

@@ -23,11 +23,12 @@ const Home = () => {
 
   return (
     <div id="home">
-      <h3>Ache um jogo e divirta-se</h3>
+      {games.length === 0 && <p className='not-found-game'>Ops! Nenhum jogo por aqui</p>}
+      
       <div className="games-container">
-        {games.length === 0 && <p>Não há festas criadas</p>}
         {games.map((game) => (
           <div className="game" key={game._id}>
+            <h3>Ache um jogo e divirta-se</h3>
             <NavLink to={`/game/${game._id}`}>
               <img src={game.image} alt={game.title} />
               <h2>{game.name}</h2>

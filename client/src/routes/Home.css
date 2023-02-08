@@ -12,3 +12,9 @@
 #home .game:hover{
   transform: scale(1.1);
 }
+
+#home .not-found-game{
+  font-size: 2em;
+  color: #0d6efd;
+  text-align: center;
+}
