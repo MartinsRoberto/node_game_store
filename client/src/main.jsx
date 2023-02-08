@@ -6,6 +6,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Home from './routes/Home'
 import Game from './routes/Game'
+import Register from './routes/Register'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
       {
         path: "/game/:id",
         element: <Game />
+      }
+      ,
+      {
+        path: "/register",
+        element: <Register />
       }
     ]
   }

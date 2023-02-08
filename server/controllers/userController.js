@@ -3,22 +3,25 @@ const UserModel = require('../models/User')
 const userController = {
   create: async (req, res) => {
     try {
+      const user = {
+        name: req.body.name,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password,
+        confirmPassword: req.body.confirmPassword
+      }
 
-      const { name, lastname, email, password, confirmpassword } = req.body
-
-      if (password != confirmpassword) {
+      if (req.body.password != req.body.confirmPassword) {
         res.status(409).json({ msg: "As senhas são diferentes" })
         return
       }
 
-      const checkEmail = await UserModel.findOne({ email: email })
+      const checkEmail = await UserModel.findOne({ email: req.body.email })
 
       if (checkEmail) {
         res.status(409).json({ msg: "Email já cadastrado" })
         return
       }
-
-      const user = { name, lastname, email, password }
 
       const response = await UserModel.create(user)
 
@@ -85,10 +88,10 @@ const userController = {
         lastname: req.body.lastname,
         email: req.body.email,
         password: req.body.password,
-        confirmpassword: req.body.confirmpassword
+        confirmPassword: req.body.confirmPassword
       }
 
-      if (req.body.password != req.body.confirmpassword) {
+      if (req.body.password != req.body.confirmPassword) {
         res.status(409).json({ msg: "As senhas são diferentes" })
         return
       }

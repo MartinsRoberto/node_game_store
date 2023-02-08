@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 
-import gameFetch from '../axios/config'
+import gameStoreFetch from '../axios/config'
 
 import "./Game.css"
 const Game = () => {
@@ -10,7 +10,7 @@ const Game = () => {
   const [game, setGame] = useState(null)
 
   const loadGame = async () => {
-    const res = await gameFetch.get(`/game/${id}`)
+    const res = await gameStoreFetch.get(`/game/${id}`)
 
     setGame(res.data)
 
