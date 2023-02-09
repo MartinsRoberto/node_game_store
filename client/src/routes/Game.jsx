@@ -39,12 +39,12 @@ const Game = () => {
 
           <div className="line"></div>
 
-          <h3>Garanta já seu!</h3>
+          <h4>Garanta já seu!</h4>
 
           <button className='btn'>Adicionar ao carrinho</button>
 
-          <div className='devices'>DEVICES: {game.devices.map((device) => (
-            <span key={device}>{device}</span>
+          <div className='devices'>Plataformas compatíveis: {game.devices.map((device) => (
+            <span key={device}>{device} | </span>
           ))}</div>
         </div>
       )}

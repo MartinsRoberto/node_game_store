@@ -45,9 +45,9 @@ const userController = {
 
   get: async (req, res) => {
     try {
-      const { id } = req.params.id
+      const { email } = req.params.email
 
-      const user = await UserModel.findById(id)
+      const user = await UserModel.findOne(email)
 
       if (!user) {
         res.status(404).json({ msg: "Usuário não encontrado" })

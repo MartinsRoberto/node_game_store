@@ -10,22 +10,32 @@ const Navbar = () => {
     if (localStorage.getItem("login")) {
       setLoggedUser(true)
     }
+    else{
+      setLoggedUser(false)
+    }
   }
   
+  const logout = () => {
+    localStorage.setItem("login", "")
+    setLoggedUser(false)
+  }
+
   useEffect(() => {
+    console.log('nav use effect')
     checkUser()
   }, [])
 
+  
   return (
     <nav id="nav-bar">
       <h2><NavLink to="/">GameStore</NavLink></h2>
       <ul className='menu'>
         <li><NavLink to="/">Home</NavLink></li>
-        {!loggedUser && <li><NavLink to="/">Login</NavLink></li>}
+        {!loggedUser && <li><NavLink to="/login">Login</NavLink></li>}
         {!loggedUser && <li><NavLink to="/register" className="register">Cadastrar</NavLink></li>}
-        {loggedUser && <li><NavLink to="/register" >Ver perfil</NavLink></li>}
-        {loggedUser && <li><NavLink to="/register" >Carrinho</NavLink></li>}
-
+        {loggedUser && <li><NavLink to="/profile" >Ver perfil</NavLink></li>}
+        {loggedUser && <li><NavLink to="/cart" >Carrinho</NavLink></li>}
+        {loggedUser && <li onClick={logout}><NavLink to="/">Sair</NavLink></li>}
       </ul>
     </nav>
   )

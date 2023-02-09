@@ -27,7 +27,6 @@ const Register = () => {
       const res = await gameStoreFetch.post('/user', user)
     
       if (res.status === 201) {
-
         localStorage.setItem("login", user.email)
         navigate("/");
       }

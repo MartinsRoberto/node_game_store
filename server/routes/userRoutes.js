@@ -6,7 +6,7 @@ router.route('/user').post((req, res) => userController.create(req, res))
 
 router.route('/user').get((req, res) => userController.getAll(req, res))
 
-router.route('/user/:id').get((req, res) => userController.get(req, res))
+router.route('/user/:email').get((req, res) => userController.get(req, res))
 
 router.route('/user/:id').delete((req, res) => userController.delete(req, res))
 

@@ -3,7 +3,7 @@ POST http://localhost:3000/api/game
 Content-Type: application/json
 
 {
-  "name": "Far Cry 13",
+  "name": "Far Cry 11",
   "description": "Far Cry is a first-person shooter set on the fictional Rook Islands, a tropical archipelago somewhere in the Pacific, controlled by pirates and mercenaries. Players control Jason Brody and can approach missions and objectives in a variety of ways.",
   "releaseYear": 2012,
   "price": 99,
