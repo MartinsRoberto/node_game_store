@@ -54,16 +54,17 @@ const userController = {
 
   get: async (req, res) => {
     try {
-      const { email } = req.params.email
+      const { id } = req.params.id
 
-      const user = await UserModel.findOne(email)
+      const user = await UserModel.findOne(id)
 
-      if (!user) {
-        res.status(404).json({ msg: "Usuário não encontrado" })
+      if (user) {
+        res.status(200).json(user)
         return
       }
-
-      res.send(200).json(user)
+      else {
+        res.json({ msg: 'Erro ao buscar usuário' })
+      }
     }
     catch (err) {
       console.log(err)
