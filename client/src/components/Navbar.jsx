@@ -1,31 +1,33 @@
-import { Link, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { UserContext } from '../context/userContext';
+
 
 import './Navbar.css'
 
 const Navbar = () => {
+
   const [loggedUser, setLoggedUser] = useState()
 
   const checkUser = () => {
-    if (localStorage.getItem("login")) {
+    if (localStorage.getItem("userId")) {
       setLoggedUser(true)
     }
-    else{
+    else {
       setLoggedUser(false)
     }
   }
-  
+
   const logout = () => {
-    localStorage.setItem("login", "")
+    localStorage.setItem("userId", "")
     setLoggedUser(false)
   }
 
   useEffect(() => {
-    console.log('nav use effect')
     checkUser()
   }, [])
 
-  
+
   return (
     <nav id="nav-bar">
       <h2><NavLink to="/">GameStore</NavLink></h2>

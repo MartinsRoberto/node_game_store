@@ -3,28 +3,32 @@ import { useNavigate } from 'react-router-dom'
 
 import gameStoreFetch from '../axios/config'
 
-
+import './Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState("a@a")
   const [password, setPassword] = useState("a")
+  const [msgLogin, setMsgLogin] = useState('')
 
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    
+
     try{
-      console.log('oi')
-      const user = { email, password}
-
-      const res = await gameStoreFetch.get('/user', user)
-
-      console.log(res)
-
-      if (res.status === 200) {
-        localStorage.setItem("login", user.email)
+      const user = {
+        email,
+        password,
+      }
+  
+      const res = await gameStoreFetch.post('/user/auth', user)
+    
+      if (res.status === 201) {
+        localStorage.setItem("userId", res.data)
         navigate("/");
+      }
+      else{
+        setMsgLogin('Email ou senha incorretos')
       }
     }
     catch(err){
@@ -46,6 +50,7 @@ const Login = () => {
         </label>
         <button type='submit' className='btn'>Entrar</button>
       </form>
+      {msgLogin && <p className='msg-login'>{msgLogin}</p>}
     </div>
   )
 }

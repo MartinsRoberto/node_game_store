@@ -25,18 +25,27 @@ const userController = {
 
       const response = await UserModel.create(user)
 
-      res.status(201).json({ msg: "Usuário criado com sucesso" })
+      res.status(201).json(response._id)
     }
     catch (err) {
       console.log(err)
     }
   },
 
-  getAll: async (req, res) => {
+  auth: async (req, res) => {
     try {
-      const response = await UserModel.find()
 
-      res.status(200).json(response)
+      const email = req.body.email
+      const password = req.body.password
+
+      const response = await UserModel.findOne({ email })
+
+      if (password == response.password && response) {
+        res.status(201).json(response._id)
+      }
+      else {
+        res.json({ msg: 'Email ou senha incorretos' })
+      }
     }
     catch (err) {
       console.log(err)
@@ -98,17 +107,17 @@ const userController = {
 
       const checkOldEmail = await UserModel.findById(id)
 
-      if(req.body.email != checkOldEmail.email){
-        
+      if (req.body.email != checkOldEmail.email) {
+
         const checkEmail = await UserModel.findOne({ email: req.body.email })
 
         if (checkEmail) {
           res.status(409).json({ msg: "Email já cadastrado" })
           return
         }
-  
+
       }
-      
+
       const response = await UserModel.findByIdAndUpdate(id, user)
 
       res.status(201).json({ response, msg: "Usuário atualizado com sucesso" })

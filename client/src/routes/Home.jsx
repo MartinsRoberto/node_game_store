@@ -6,24 +6,14 @@ import gameStoreFetch from '../axios/config'
 import "./Home.css"
 
 const Home = () => {
-
   const [games, setGames] = useState(null)
-  const [loggedUser, setLoggedUser] = useState(null)
 
   const loadGames = async () => {
     const res = await gameStoreFetch.get("/game")
-
     setGames(res.data)
   }
 
-  const checkUser = () => {
-    if(localStorage.getItem("login")){
-      setLoggedUser(true)
-    }
-  }
-
   useEffect(() => {
-    checkUser()
     loadGames()
   }, [])
 
