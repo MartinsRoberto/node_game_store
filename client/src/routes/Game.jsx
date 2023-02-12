@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useParams, useNavigate } from 'react-router-dom'
 
 import gameStoreFetch from '../axios/config'
 
@@ -8,6 +8,8 @@ const Game = () => {
   const { id } = useParams()
 
   const [game, setGame] = useState(null)
+
+  const navigate = useNavigate()
 
   const loadGame = async () => {
     const res = await gameStoreFetch.get(`/game/${id}`)
@@ -20,6 +22,25 @@ const Game = () => {
   useEffect(() => {
     loadGame()
   }, [])
+
+
+  const handleCart = async () => {
+    try{
+      const data = {
+        user_id: localStorage.getItem('userId'),
+        game_id: id
+      }
+
+      const res = await gameStoreFetch.post("/cart", data)
+      
+      if (res.status === 201) {
+        navigate("/cart");
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
 
   return (
     <div id="game-container">
@@ -41,7 +62,7 @@ const Game = () => {
 
           <h4>Garanta já seu!</h4>
 
-          <button className='btn'>Adicionar ao carrinho</button>
+          <button className='btn' onClick={handleCart}>Adicionar ao carrinho</button>
 
           <div className='devices'>Plataformas compatíveis: {game.devices.map((device) => (
             <span key={device}>{device} | </span>

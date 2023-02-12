@@ -12,7 +12,6 @@ const gameController = {
         devices: req.body.devices
       }
 
-      console.log(game.devices)
       const searchName = await GameModel.findOne({ name: game.name })
 
       if (searchName) {

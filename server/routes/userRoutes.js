@@ -2,9 +2,12 @@ const router = require('express').Router()
 
 const userController = require('../controllers/userController')
 
+//register
 router.route('/user').post((req, res) => userController.create(req, res))
 
+//login
 router.route('/user/auth').post((req, res) => userController.auth(req, res))
+
 
 router.route('/user/:id').get((req, res) => userController.get(req, res))
 

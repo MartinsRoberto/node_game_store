@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom'
 import gameStoreFetch from '../axios/config'
 
 const Register = () => {
-  const [name, setName] = useState("a")
-  const [lastName, setLastName] = useState("a")
-  const [email, setEmail] = useState("a@a")
-  const [password, setPassword] = useState("a")
-  const [confirmPassword, setConfirmPassword] = useState("a")
+  const [name, setName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
 
   const navigate = useNavigate();
 

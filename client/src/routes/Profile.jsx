@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import gameStoreFetch from '../axios/config'
 
+import './Profile.css'
+
 const Profile = () => {
   const [name, setName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -29,6 +31,7 @@ const Profile = () => {
   }
   return (
     <div id="profile">
+      <h3>Faça o seu cadastro</h3>
       <form onSubmit={handleSubmit}>
         <label>
           <input type="text" name="name" onChange={(e) => setName(e.target.value)} value={name} required />
@@ -46,7 +49,7 @@ const Profile = () => {
           <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
           <span className={password && 'active'}>Senha</span>
         </label>
-        <button type='submit' className='btn'>Cadastrar</button>
+        <button type='submit' className='btn'>Salvar alteração</button>
       </form>
     </div>
   )
