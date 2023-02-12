@@ -7,7 +7,7 @@ const User = db.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  lastname: {
+  lastName: {
     type: DataTypes.STRING,
     allowNull: false,
   },

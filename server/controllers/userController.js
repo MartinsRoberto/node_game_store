@@ -5,12 +5,13 @@ const userController = {
     try {
       const user = {
         name: req.body.name,
-        lastname: req.body.lastname,
+        lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password,
         confirmPassword: req.body.confirmPassword
       }
 
+      console.log('user', user)
       if (req.body.password != req.body.confirmPassword) {
         res.status(409).json({ msg: "As senhas são diferentes" })
         return
@@ -26,7 +27,7 @@ const userController = {
       const response = await UserModel.create(user)
 
       console.log('create', response)
-      
+
       res.status(201).json(response._id)
     }
     catch (err) {
@@ -60,7 +61,7 @@ const userController = {
     try {
       const { id } = req.params.id
 
-      const user = await UserModel.findOne(id)
+      const user = await UserModel.findOne({ where: { id: id }, raw: true })
 
       if (user) {
         res.status(200).json(user)
@@ -79,7 +80,7 @@ const userController = {
     try {
       const { id } = req.params.id
 
-      const user = await UserModel.findByIdAndDelete(id)
+      const user = await UserModel.destroy({ where: { id: id } })
 
       if (!user) {
         res.status(404).json({ msg: "Usuário não encontrado" })
@@ -110,11 +111,11 @@ const userController = {
         return
       }
 
-      const checkOldEmail = await UserModel.findById(id)
+      const checkOldEmail = await UserModel.findOne({ where: { id: id }, raw: true })
 
       if (req.body.email != checkOldEmail.email) {
 
-        const checkEmail = await UserModel.findOne({ email: req.body.email })
+        const checkEmail = await UserModel.findOne({ where: { email: req.body.email }, raw: true })
 
         if (checkEmail) {
           res.status(409).json({ msg: "Email já cadastrado" })
