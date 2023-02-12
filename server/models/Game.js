@@ -1,36 +1,32 @@
-const mongoose = require('mongoose')
+const { DataTypes } = require("sequelize")
 
-const { Schema } = mongoose
+const db = require("../db/conn")
 
-const gameSchema = new Schema(
-  {
-    name: {
-      type: String,
-      require: true
-    },
-    description: {
-      type: String,
-      require: true
-    },
-    releaseYear: {
-      type: Number,
-      require: true,
-    },
-    price: {
-      type: Number,
-      required: true
-    },
-    image: {
-      type: String,
-      required: true
-    },
-    devices: {
-      type: Array,
-      require: true
-    }
-  }
-)
+const Games = db.define("Games", {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  releaseYear: {
+    type: DataTypes.NUMBER,
+    allowNull: false,
+  },
+  price: {
+    type: DataTypes.NUMBER,
+    allowNull: false,
+  },
+  image: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  devices: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+})
 
-const Game = mongoose.model("Games", gameSchema)
-
-module.exports = Game
+module.exports = Games

@@ -1,21 +1,16 @@
+const { DataTypes } = require("sequelize")
 
-const mongoose = require('mongoose')
+const db = require("../db/conn")
 
-const { Schema } = mongoose
-
-const cartSchema = new Schema(
-  {
-    user_id: {
-      type: String,
-      require: true
-    },
-    game_id: {
-      type: Array,
-      require: true
-    }
+const Cart = db.define("Cart", {
+  user_id: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  game_id: {
+    type: DataTypes.STRING,
+    allowNull: false,
   }
-)
-
-const Cart = mongoose.model("Carts", cartSchema)
+})
 
 module.exports = Cart

@@ -16,7 +16,7 @@ const userController = {
         return
       }
 
-      const checkEmail = await UserModel.findOne({ email: req.body.email })
+      const checkEmail = await UserModel.findOne({ where: { email: req.body.email}, raw: true })
 
       if (checkEmail) {
         res.status(409).json({ msg: "Email já cadastrado" })
@@ -25,6 +25,8 @@ const userController = {
 
       const response = await UserModel.create(user)
 
+      console.log('create', response)
+      
       res.status(201).json(response._id)
     }
     catch (err) {
@@ -38,7 +40,9 @@ const userController = {
       const email = req.body.email
       const password = req.body.password
 
-      const response = await UserModel.findOne({ email })
+      const response = await UserModel.findOne({ where: { email: email}, raw: true })
+
+      console.log('auth', response)
 
       if (password == response.password && response) {
         res.status(201).json(response._id)
