@@ -1,28 +1,36 @@
 const CartModel = require('../models/Cart')
+const GameModel = require('../models/Game')
 
 const cartController = {
   create: async (req, res) => {
     try {
-      const user_id = req.body.user_id
-      const game_id = req.body.game_id
+      const userId = req.body.userId
+      const gameId = req.body.gameId
 
-      const checkIfExistUserCart = await CartModel.findOne({ user_id: user_id })
 
-      if (!checkIfExistUserCart) {
-        await CartModel.create({
-          user_id,
-          game_id
-        })
-      }
-      else {
-        const gamesCart = checkIfExistUserCart.game_id
-        gamesCart.push(game_id)
-
-        const a = await CartModel.findOneAndUpdate({ user_id }, { game_id: gamesCart })
-        console.log(a)
-      }
+      await CartModel.create({
+        userId,
+        gameId
+      })
 
       res.status(201).json({ msg: "Adicionado ao carrinho com sucesso" });
+
+    }
+    catch (err) {
+      console.log(err)
+    }
+  },
+
+  get: async (req, res) => {
+    try {
+      console.log('1dfun')
+      const userId = req.params.id
+
+      const response = await CartModel.findAll({ where: { userId: userId }, raw: true })
+
+      console.log('kkkkkkkk', response[0].gameId)
+
+      res.status(201).json(response);
 
     }
     catch (err) {

@@ -12,11 +12,11 @@ const Games = db.define("Games", {
     allowNull: false,
   },
   releaseYear: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.DOUBLE,
     allowNull: false,
   },
   price: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.DOUBLE,
     allowNull: false,
   },
   image: {

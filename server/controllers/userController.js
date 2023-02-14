@@ -28,7 +28,7 @@ const userController = {
 
       console.log('create', response)
 
-      res.status(201).json(response._id)
+      res.status(201).json(response.id)
     }
     catch (err) {
       console.log(err)
@@ -43,10 +43,11 @@ const userController = {
 
       const response = await UserModel.findOne({ where: { email: email}, raw: true })
 
+      console.log('----------------------------------')
       console.log('auth', response)
 
       if (password == response.password && response) {
-        res.status(201).json(response._id)
+        res.status(201).json(response.id)
       }
       else {
         res.json({ msg: 'Email ou senha incorretos' })

@@ -15,8 +15,6 @@ const Game = () => {
     const res = await gameStoreFetch.get(`/game/${id}`)
 
     setGame(res.data)
-
-    console.log(res.data)
   }
 
   useEffect(() => {
@@ -27,8 +25,8 @@ const Game = () => {
   const handleCart = async () => {
     try{
       const data = {
-        user_id: localStorage.getItem('userId'),
-        game_id: id
+        userId: localStorage.getItem('userId'),
+        gameId: id
       }
 
       const res = await gameStoreFetch.post("/cart", data)
@@ -64,9 +62,8 @@ const Game = () => {
 
           <button className='btn' onClick={handleCart}>Adicionar ao carrinho</button>
 
-          <div className='devices'>Plataformas compatíveis: {game.devices.map((device) => (
-            <span key={device}>{device} | </span>
-          ))}</div>
+          <div className='devices'>Plataformas compatíveis: {game.devices}</div>
+          
         </div>
       )}
     </div>

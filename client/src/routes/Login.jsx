@@ -6,8 +6,8 @@ import gameStoreFetch from '../axios/config'
 import './Login.css'
 
 const Login = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("a@email.com")
+  const [password, setPassword] = useState("a")
   const [msgLogin, setMsgLogin] = useState('')
 
   const navigate = useNavigate()

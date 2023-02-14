@@ -3,11 +3,11 @@ const { DataTypes } = require("sequelize")
 const db = require("../db/conn")
 
 const Cart = db.define("Cart", {
-  user_id: {
+  userId: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  game_id: {
+  gameId: {
     type: DataTypes.STRING,
     allowNull: false,
   }

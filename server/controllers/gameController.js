@@ -12,7 +12,7 @@ const gameController = {
         devices: req.body.devices
       }
 
-      const searchName = await GameModel.findOne({ name: game.name })
+      const searchName = await GameModel.findOne({ where: { name: req.body.name }, raw: true })
 
       if (searchName) {
         res.status(409).json({ msg: "Este jogo já foi criado" })
@@ -30,7 +30,7 @@ const gameController = {
 
   getAll: async (req, res) => {
     try {
-      const response = await GameModel.find()
+      const response = await GameModel.findAll()
 
       res.status(200).json(response)
 
@@ -44,7 +44,7 @@ const gameController = {
     try {
       const id = req.params.id
 
-      const game = await GameModel.findById(id)
+      const game = await GameModel.findOne({ where: { id: id }, raw: true })
 
       if (!game) {
         res.status(404).json({ msg: "Jogo não encontrada" });
@@ -63,7 +63,7 @@ const gameController = {
     try {
       const id = req.params.id
 
-      const game = await GameModel.findById(id)
+      const game = await GameModel.findOne({ where: { id: id }, raw: true })
 
       if (!game) {
         res.status(404).json({ msg: "Jogo não encontrado" })
@@ -92,10 +92,10 @@ const gameController = {
         devices: req.body.image
       }
 
-      const checkName = await GameModel.findById(id)
+      const checkName = await GameModel.findOne({ where: { id: id }, raw: true })
 
       if (checkName.name != game.name) {
-        const checkAllNames = await GameModel.findOne({ name: game.name })
+        const checkAllNames = await GameModel.findOne({ where: { name: req.body.name }, raw: true })
 
         if (checkAllNames) {
           res.status(409).json({ msg: "Este jogo já foi criado" })
